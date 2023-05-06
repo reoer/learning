@@ -1,7 +1,8 @@
 import os
 import csv
 
-folder_path = 'gene'
+folder_path = 'data/*'
+outcome_path = 'Intermediate/*'
 for filename in os.listdir(folder_path):
     if filename.endswith('.csv'):
         with open(os.path.join(folder_path, filename), newline='') as f:
@@ -23,6 +24,6 @@ for filename in os.listdir(folder_path):
                         result[row[0]] = row[1:]
                         with open(filename, 'w', newline='') as outcomes:
                             writer = csv.writer(outcomes)
-#                            writer.writerow([filename,'variants_effect_3_prime_UTR_variant,variants_effect_5_prime_UTR_variant,variants_effect_downstream_gene_variant,variants_effect_exon_region,variants_effect_intron_variant,variants_effect_protein_protein_contact,variants_effect_splice_acceptor_variant,variants_effect_splice_donor_variant,variants_effect_splice_region_variant,variants_effect_upstream_gene_variant'])
+#                            writer.writerow([os.path.join(outcome_path, filename),'variants_effect_3_prime_UTR_variant,variants_effect_5_prime_UTR_variant,variants_effect_downstream_gene_variant,variants_effect_exon_region,variants_effect_intron_variant,variants_effect_protein_protein_contact,variants_effect_splice_acceptor_variant,variants_effect_splice_donor_variant,variants_effect_splice_region_variant,variants_effect_upstream_gene_variant'])
                             for key, value in result.items():
                                 writer.writerow([key, value])
