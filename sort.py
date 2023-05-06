@@ -7,7 +7,6 @@ for filename in os.listdir(folder_path):
     if filename.endswith('.csv'):
         with open(os.path.join(folder_path, filename), newline='') as f:
             data = list(csv.reader(f))
-#            print(data)
             data2 = data[1:len(data)]
             first_elements = []
             int_list = []
@@ -22,8 +21,7 @@ for filename in os.listdir(folder_path):
                 else:
                     if sum(row[1:]) > sum(result[row[0]]):
                         result[row[0]] = row[1:]
-                        with open(filename, 'w', newline='') as outcomes:
+                        with open(os.path.join(outcome_path, filename), 'w', newline='') as outcomes:
                             writer = csv.writer(outcomes)
-#                            writer.writerow([os.path.join(outcome_path, filename),'variants_effect_3_prime_UTR_variant,variants_effect_5_prime_UTR_variant,variants_effect_downstream_gene_variant,variants_effect_exon_region,variants_effect_intron_variant,variants_effect_protein_protein_contact,variants_effect_splice_acceptor_variant,variants_effect_splice_donor_variant,variants_effect_splice_region_variant,variants_effect_upstream_gene_variant'])
                             for key, value in result.items():
                                 writer.writerow([key, value])
