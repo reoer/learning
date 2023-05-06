@@ -12,7 +12,7 @@ for filename in os.listdir(folder_path):
             int_list = []
             for row in data2:
                 first_elements.append(row[0])
-                int_list.append(list(map(int, row[2:12])))
+                int_list.append(list(map(int, row[2:-2])))
             my_list = [[first_elements[i]] + int_list[i] for i in range(len(first_elements))]
             result = {}
             for row in my_list:
