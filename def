@@ -1,2 +1,5 @@
-def nop():
-    pass
+import random
+def lezi():
+    lezi = '典笑急麻乐'
+    i = random.randint(0,4)
+    print(lezi[i])
